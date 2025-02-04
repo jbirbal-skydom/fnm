@@ -206,6 +206,20 @@ if not defined FNM_AUTORUN_GUARD (
 )
 ```
 
+Option 2: Permanent Setup (Best for Daily Use)
+Open Command Prompt (cmd.exe) as Administrator.
+
+Run the following command to add it to cmd's startup behavior:
+
+```sh
+reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /t REG_SZ /d "for /f \"tokens=*\" %%z in ('fnm env --use-on-cd') do @%%z" /f
+```
+
+🔹 This tells Windows to run fnm env --use-on-cd automatically whenever you open cmd.exe.
+
+
+
+
 #### Usage with Cmder
 
 Usage is very similar to the normal WinCMD install, apart for a few tweaks to allow being called from the cmder startup script. The example **assumes** that the `CMDER_ROOT` environment variable is **set** to the **root directory** of your Cmder installation.
